@@ -5,6 +5,7 @@ using UnityEngine.Windows;
 
 public class ControllableCharacter : MonoBehaviour
 {
+    [Header("Stats")]
     [SerializeField] float speed = 5f;
 
     public void move(Vector3 inputVector)

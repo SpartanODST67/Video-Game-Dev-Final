@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
+    [Header("Current Character")]
     [SerializeField] ControllableCharacter controlledCharacter;
 
     // Update is called once per frame
