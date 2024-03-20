@@ -11,6 +11,22 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] Transform playerBattleStation;
     [SerializeField] Transform enemyBattleStation;
 
+    private List<BattleState> battleStates = new List<BattleState>() { new StartBattleState(), new PlayerBattleState(), new EnemyBattleState(), new WaitBattleState(), new LoseBattleState(), new WinBattleState()};
+
+    private void Start()
+    {
+        StartCoroutine("TestBattleStates");
+    }
+
+    IEnumerator TestBattleStates()
+    {
+        foreach (BattleState state in battleStates)
+        {
+            state.StateAction();
+            yield return 0;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
