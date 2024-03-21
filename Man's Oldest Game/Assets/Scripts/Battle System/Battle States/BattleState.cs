@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-interface BattleState
+public interface BattleState
 {
+    public void SetBattleSystem(BattleSystem battleSystem);
     public void StateAction();
 }
