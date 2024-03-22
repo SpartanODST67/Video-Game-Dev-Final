@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface EnemyAI
 {
-    public void MakeDecision();
+    public AttackSelection MakeDecision();
 }

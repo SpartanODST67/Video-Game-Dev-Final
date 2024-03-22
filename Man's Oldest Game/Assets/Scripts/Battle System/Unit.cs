@@ -6,16 +6,37 @@ public class Unit : MonoBehaviour
 {
     [Header("Unit Stats")]
     [SerializeField] int health = 3;
+    private EnemyAI myAI;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        
+        myAI = GetComponent<EnemyAI>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public int GetHealth()
     {
-        
+        return health;
+    }
+
+    public int TakeDamage(int damage)
+    {
+        health -= damage;
+        return health;
+    }
+
+    public int Heal(int health)
+    {
+        this.health += health;
+        return this.health;
+    }
+
+    public EnemyAI GetAI()
+    {
+        if(myAI == null)
+        {
+            Debug.Log("Attempted to recieve AI when no AI component assigned");
+            return new DumbAI();
+        }
+        return myAI;
     }
 }

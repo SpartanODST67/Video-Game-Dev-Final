@@ -20,6 +20,9 @@ public class EnemyBattleState : BattleState
     public void StateAction()
     {
         Debug.Log("Enemy Turn");
-        myAI.MakeDecision();
+        AttackSelection myAttack = myAI.MakeDecision();
+        battleSystem.SetEnemyAttack(myAttack);
+        battleSystem.SetState(battleSystem.GetState(3));
+        battleSystem.TriggerState();
     }
 }

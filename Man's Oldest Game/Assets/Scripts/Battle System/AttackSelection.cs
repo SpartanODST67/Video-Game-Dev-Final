@@ -1,0 +1,1 @@
+public enum AttackSelection { ROCK, PAPER, SCISSORS };

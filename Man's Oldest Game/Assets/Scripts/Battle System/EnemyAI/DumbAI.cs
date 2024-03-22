@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class DumbAI : MonoBehaviour, EnemyAI
 {
-    public void MakeDecision()
+    public AttackSelection MakeDecision()
     {
         int rand = Random.Range(0, 3);
         switch (rand)
         {
             case 0:
                 Debug.Log("Rock");
-                break;
+                return AttackSelection.ROCK;
             case 1:
                 Debug.Log("Paper");
-                break;
+                return AttackSelection.PAPER;
             case 2:
                 Debug.Log("Scissors");
-                break;
+                return AttackSelection.SCISSORS;
             default:
                 Debug.Log(string.Format("Unexpected random number: %d", rand));
-                break;
+                //TODO: Make a proper error
+                return AttackSelection.ROCK;
         }
     }
 
