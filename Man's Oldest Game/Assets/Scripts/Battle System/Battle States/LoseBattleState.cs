@@ -16,6 +16,7 @@ public class LoseBattleState : BattleState
         Debug.Log("Lost Battle");
         battleSystem.DestroyBattleStationCombatants();
         //RewardPlayer();
+        battleSystem.GetEnemy().gameObject.SetActive(false);
         battleSystem.EndBattle();
     }
 }

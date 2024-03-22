@@ -16,7 +16,10 @@ public class WinBattleState : BattleState
         Debug.Log("Won Battle");
         battleSystem.DestroyBattleStationCombatants();
         //RewardPlayer();
-        battleSystem.GetEnemy().gameObject.SetActive(false);
+        //I would fire myself if I saw this.
+        GameObject enemy = battleSystem.GetEnemy().gameObject;
+        enemy.AddComponent<DestroyOnDisable>();
+        enemy.SetActive(false);
         battleSystem.EndBattle();
     }
 }
