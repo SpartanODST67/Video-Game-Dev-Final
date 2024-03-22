@@ -12,12 +12,8 @@ public class BattleSystem : MonoBehaviour
     [Header("Battle Stations")]
     [SerializeField] Transform playerBattleStation;
     [SerializeField] Transform enemyBattleStation;
-    private GameObject stationedPlayerBattleUnit;
-    private GameObject stationedEnemyBattleUnit;
     [Header("Battle UI")]
     [SerializeField] Canvas battleUI;
-
-    private GameObject adventureSystem;
 
     private AttackSelection playerAttack;
     private AttackSelection enemyAttack;
@@ -25,11 +21,6 @@ public class BattleSystem : MonoBehaviour
     private List<BattleState> battleStates = new List<BattleState>() { new StartBattleState(), new PlayerBattleState(), new EnemyBattleState(), new WaitBattleState(), new LoseBattleState(), new WinBattleState()};
     private BattleState currentState;
 
-
-    public void SetAdventureSystem(GameObject adventureSystem)
-    {
-        this.adventureSystem = adventureSystem;
-    }
 
     public void SetState(BattleState state)
     {
@@ -90,13 +81,6 @@ public class BattleSystem : MonoBehaviour
         return enemyAttack;
     }
 
-    public void AdventureToCombat(GameObject adventureSystem)
-    {
-        gameObject.SetActive(true);
-        adventureSystem.SetActive(false);
-    }
-
-
     //Why did I make a StartBattleState???
     public void StartBattle(Unit player, Unit enemy)
     {
@@ -107,30 +91,13 @@ public class BattleSystem : MonoBehaviour
         currentState.StateAction();
     }
 
-    private void WaitToStart()
-    {
-        StartCoroutine("WaitToStartCoroutine");
-    }
-
-    IEnumerator WaitToStartCoroutine()
-    {
-        yield return new WaitForSeconds(1);
-    }
-
-    public void EndBattle()
-    {
-        Destroy(enemyUnit.gameObject);
-        adventureSystem.SetActive(true);
-        gameObject.SetActive(false);
-    }
-
     //This is so hacky
     public void InstantiateBattleStationCombatants()
     {
-        stationedEnemyBattleUnit = Instantiate(enemyUnit.gameObject, enemyBattleStation);
-        stationedEnemyBattleUnit.transform.localPosition = Vector3.zero;
-        stationedPlayerBattleUnit = Instantiate(playerUnit.gameObject, playerBattleStation);
-        stationedPlayerBattleUnit.transform.localPosition = Vector3.zero;
+        GameObject unit = Instantiate(enemyUnit.gameObject, enemyBattleStation);
+        unit.transform.localPosition = Vector3.zero;
+        unit = Instantiate(playerUnit.gameObject, playerBattleStation);
+        unit.transform.localPosition = Vector3.zero;
     }
 
     public void DestroyBattleStationCombatants()
