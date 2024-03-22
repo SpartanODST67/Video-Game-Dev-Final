@@ -14,5 +14,14 @@ public class LoseBattleState : BattleState
     public void StateAction()
     {
         Debug.Log("Lost Battle");
+        CleanBattleStations();
+        //RewardPlayer();
+
+    }
+
+    private void CleanBattleStations()
+    {
+        battleSystem.DestroyBattleStationCombatants();
+        battleSystem.EndBattle();
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class WinBattleState : BattleState
@@ -14,5 +15,14 @@ public class WinBattleState : BattleState
     public void StateAction()
     {
         Debug.Log("Won Battle");
+        CleanBattleStations();
+        //RewardPlayer();
+
+    }
+
+    private void CleanBattleStations()
+    {
+        battleSystem.DestroyBattleStationCombatants();
+        battleSystem.EndBattle();
     }
 }
