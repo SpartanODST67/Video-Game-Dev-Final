@@ -14,39 +14,15 @@ public class BattleSystem : MonoBehaviour
     private List<BattleState> battleStates = new List<BattleState>() { new StartBattleState(), new PlayerBattleState(), new EnemyBattleState(), new WaitBattleState(), new LoseBattleState(), new WinBattleState()};
     private BattleState currentState;
 
-    private void OnEnable()
-    {
-        SetUpStateMachine();
-        StartCoroutine("TestStateMachine");
-    }
-
-    IEnumerator TestStateMachine()
-    {
-        foreach(BattleState state in battleStates)
-        {
-            state.StateAction();
-            yield return 0;
-        }
-    }
-
-    public void SetUpStateMachine()
-    {
-        foreach(BattleState state in battleStates)
-        {
-            state.SetBattleSystem(this);
-        }
-    }
 
     public void SetState(BattleState state)
     {
         currentState = state;
     }
 
-    public void StartBattle(Unit player, Unit enemy)
+    public void TriggerState()
     {
-        SetPlayer(player);
-        SetEnemy(enemy);
-        SetState(battleStates[0]);
+        currentState.StateAction();
     }
 
     public void SetPlayer(Unit player)
@@ -57,5 +33,38 @@ public class BattleSystem : MonoBehaviour
     public void SetEnemy(Unit enemy)
     {
         enemyUnit = enemy;
+    }
+
+    //Why did I make a StartBattleState???
+    public void StartBattle(Unit player, Unit enemy)
+    {
+        SetPlayer(player);
+        SetEnemy(enemy);
+        InstantiateBattleStationCombatants();
+        InitializeStateMachine();
+    }
+
+    //This is so hacky
+    public void InstantiateBattleStationCombatants()
+    {
+        GameObject unit = Instantiate(enemyUnit.gameObject, enemyBattleStation);
+        unit.transform.localPosition = Vector3.zero;
+        unit = Instantiate(playerUnit.gameObject, playerBattleStation);
+        unit.transform.localPosition = Vector3.zero;
+    }
+
+    public void DestroyBattleStationCombatants()
+    {
+        Destroy(enemyBattleStation.transform.GetChild(0).gameObject);
+        Destroy(playerBattleStation.transform.GetChild(0).gameObject);
+    }
+
+    public void InitializeStateMachine()
+    {
+        foreach (BattleState state in battleStates)
+        {
+            state.SetBattleSystem(this);
+        }
+        SetState(battleStates[1]);
     }
 }
