@@ -88,6 +88,7 @@ public class BattleSystem : MonoBehaviour
     //Why did I make a StartBattleState???
     public void StartBattle(Unit player, Unit enemy)
     {
+        Random.InitState((int) Time.time);
         SetPlayer(player);
         SetEnemy(enemy);
         InstantiateBattleStationCombatants();

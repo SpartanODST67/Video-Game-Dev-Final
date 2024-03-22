@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoseBattleState : BattleState
 {
@@ -16,7 +17,6 @@ public class LoseBattleState : BattleState
         Debug.Log("Lost Battle");
         battleSystem.DestroyBattleStationCombatants();
         //RewardPlayer();
-        battleSystem.GetEnemy().gameObject.SetActive(false);
-        battleSystem.EndBattle();
+        SceneManager.LoadScene("TitleScreen");
     }
 }
