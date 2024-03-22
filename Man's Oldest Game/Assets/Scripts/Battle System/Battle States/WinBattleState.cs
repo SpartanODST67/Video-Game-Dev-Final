@@ -14,5 +14,9 @@ public class WinBattleState : BattleState
     public void StateAction()
     {
         Debug.Log("Won Battle");
+        battleSystem.DestroyBattleStationCombatants();
+        //RewardPlayer();
+        battleSystem.GetEnemy().gameObject.SetActive(false);
+        battleSystem.EndBattle();
     }
 }

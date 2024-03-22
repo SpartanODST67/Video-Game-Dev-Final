@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BattleSystem : MonoBehaviour
 {
+    [Header("System to Transer Back To")]
+    [SerializeField] GameObject adventureSystem;
     [Header("Input Handler")]
     [SerializeField] CombatInputHandler inputHandler;
     [Header("Combat Units")]
@@ -12,6 +14,8 @@ public class BattleSystem : MonoBehaviour
     [Header("Battle Stations")]
     [SerializeField] Transform playerBattleStation;
     [SerializeField] Transform enemyBattleStation;
+    private GameObject stationedPlayer;
+    private GameObject stationedEnemy;
     [Header("Battle UI")]
     [SerializeField] Canvas battleUI;
 
@@ -91,13 +95,19 @@ public class BattleSystem : MonoBehaviour
         currentState.StateAction();
     }
 
+    public void EndBattle()
+    {
+        adventureSystem.SetActive(true);
+        gameObject.transform.parent.gameObject.SetActive(false);
+    }
+
     //This is so hacky
     public void InstantiateBattleStationCombatants()
     {
-        GameObject unit = Instantiate(enemyUnit.gameObject, enemyBattleStation);
-        unit.transform.localPosition = Vector3.zero;
-        unit = Instantiate(playerUnit.gameObject, playerBattleStation);
-        unit.transform.localPosition = Vector3.zero;
+        stationedEnemy = Instantiate(enemyUnit.gameObject, enemyBattleStation);
+        stationedEnemy.transform.localPosition = Vector3.zero;
+        stationedPlayer = Instantiate(playerUnit.gameObject, playerBattleStation);
+        stationedPlayer.transform.localPosition = Vector3.zero;
     }
 
     public void DestroyBattleStationCombatants()
