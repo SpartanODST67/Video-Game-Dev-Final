@@ -29,6 +29,7 @@ public class PlayerBattleState : BattleState
     {
         Debug.Log("Player Turn");
         inputHandler.SetBattleSystem(battleSystem);
+        battleSystem.ShowButtonSelection();
         inputHandler.GetInputAction();
     }
 

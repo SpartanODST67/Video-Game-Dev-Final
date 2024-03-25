@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BattleSystem : MonoBehaviour
@@ -19,7 +20,10 @@ public class BattleSystem : MonoBehaviour
     [Header("Battle UI")]
     [SerializeField] Canvas battleUI;
     [SerializeField] HealthPips playerHealthPips;
+    [SerializeField] GameObject playerSelectionButtons;
     [SerializeField] HealthPips enemyHealthPips;
+    [Header("Only here until animations")]
+    [SerializeField] TextMeshProUGUI enemyMoveDisplay;
 
     private AttackSelection playerAttack;
     private AttackSelection enemyAttack;
@@ -95,6 +99,16 @@ public class BattleSystem : MonoBehaviour
     public void UpdateEnemyHealthUI(int value)
     {
         enemyHealthPips.UpdateBar(value);
+    }
+
+    public void UpdateDisplayedEnemyMove(AttackSelection attack)
+    {
+        enemyMoveDisplay.text = attack.ToString();
+    }
+
+    public void ShowButtonSelection()
+    {
+        playerSelectionButtons.SetActive(true);
     }
 
     //Why did I make a StartBattleState???

@@ -47,6 +47,14 @@ public class CombatInputHandler : MonoBehaviour
         ReturnSelectedAttack();
     }
 
+    public void ButtonSelect(int attack)
+    {
+        selectedAttack = (AttackSelection)attack;
+        Debug.Log(selectedAttack.ToString());
+        StopCoroutine("WaitForInputCoroutine");
+        ReturnSelectedAttack();
+    }
+
     private void ReturnSelectedAttack()
     {
         battleSystem.SetPlayerAttack(selectedAttack);
