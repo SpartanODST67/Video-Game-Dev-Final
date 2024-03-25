@@ -26,11 +26,11 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] TextMeshProUGUI enemyMoveDisplay;
 
     private AttackSelection playerAttack;
+    private AttackSelection playerBluff = AttackSelection.NULL;
     private AttackSelection enemyAttack;
 
     private List<BattleState> battleStates = new List<BattleState>() { new StartBattleState(), new PlayerBattleState(), new EnemyBattleState(), new WaitBattleState(), new LoseBattleState(), new WinBattleState()};
     private BattleState currentState;
-
 
     public void SetState(BattleState state)
     {
@@ -67,6 +67,11 @@ public class BattleSystem : MonoBehaviour
         playerAttack = attack;
     }
 
+    public void SetPlayerBluff(AttackSelection bluff)
+    {
+        playerBluff = bluff;
+    }
+
     public void SetEnemyAttack(AttackSelection attack)
     {
         enemyAttack = attack;
@@ -84,6 +89,11 @@ public class BattleSystem : MonoBehaviour
     public AttackSelection GetPlayerAttack()
     {
         return playerAttack;
+    }
+
+    public AttackSelection GetPlayerBluff()
+    {
+        return playerBluff;
     }
 
     public AttackSelection GetEnemyAttack()

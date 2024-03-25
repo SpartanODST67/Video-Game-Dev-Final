@@ -20,6 +20,7 @@ public class EnemyBattleState : BattleState
     public void StateAction()
     {
         Debug.Log("Enemy Turn");
+        myAI.SetPlayerBluff(battleSystem.GetPlayerBluff());
         AttackSelection myAttack = myAI.MakeDecision();
         battleSystem.SetEnemyAttack(myAttack);
         battleSystem.UpdateDisplayedEnemyMove(myAttack);

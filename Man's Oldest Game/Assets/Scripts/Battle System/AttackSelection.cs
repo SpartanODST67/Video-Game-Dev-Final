@@ -1,1 +1,1 @@
-public enum AttackSelection { ROCK, PAPER, SCISSORS };
+public enum AttackSelection { NULL = -1, ROCK = 0, PAPER = 1, SCISSORS = 2 };

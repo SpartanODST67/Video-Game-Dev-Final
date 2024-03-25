@@ -6,6 +6,7 @@ using UnityEngine.Rendering.UI;
 public class CombatInputHandler : MonoBehaviour
 {
     AttackSelection selectedAttack;
+    AttackSelection selectedBluff;
     BattleSystem battleSystem;
 
     public void SetBattleSystem(BattleSystem battleSystem)
@@ -47,12 +48,19 @@ public class CombatInputHandler : MonoBehaviour
         ReturnSelectedAttack();
     }
 
-    public void ButtonSelect(int attack)
+    public void ButtonAttackSelect(int attack)
     {
         selectedAttack = (AttackSelection)attack;
         Debug.Log(selectedAttack.ToString());
         StopCoroutine("WaitForInputCoroutine");
         ReturnSelectedAttack();
+    }
+
+    public void ButtonBluffSelect(int bluff)
+    {
+        selectedBluff = (AttackSelection)bluff;
+        Debug.Log("Bluffing: " + selectedBluff.ToString());
+        battleSystem.SetPlayerBluff(selectedBluff);
     }
 
     private void ReturnSelectedAttack()

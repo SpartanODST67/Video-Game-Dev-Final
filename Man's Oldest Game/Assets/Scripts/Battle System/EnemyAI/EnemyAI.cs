@@ -5,4 +5,5 @@ using UnityEngine;
 public interface EnemyAI
 {
     public AttackSelection MakeDecision();
+    public void SetPlayerBluff(AttackSelection bluff);
 }
