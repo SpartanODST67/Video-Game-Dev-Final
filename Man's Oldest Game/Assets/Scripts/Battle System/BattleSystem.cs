@@ -18,6 +18,8 @@ public class BattleSystem : MonoBehaviour
     private GameObject stationedEnemy;
     [Header("Battle UI")]
     [SerializeField] Canvas battleUI;
+    [SerializeField] HealthPips playerHealthPips;
+    [SerializeField] HealthPips enemyHealthPips;
 
     private AttackSelection playerAttack;
     private AttackSelection enemyAttack;
@@ -85,12 +87,25 @@ public class BattleSystem : MonoBehaviour
         return enemyAttack;
     }
 
+    public void UpdatePlayerHealthUI(int value)
+    {
+        playerHealthPips.UpdateBar(value);
+    }
+
+    public void UpdateEnemyHealthUI(int value)
+    {
+        enemyHealthPips.UpdateBar(value);
+    }
+
     //Why did I make a StartBattleState???
     public void StartBattle(Unit player, Unit enemy)
     {
         Random.InitState((int) Time.time);
         SetPlayer(player);
         SetEnemy(enemy);
+        battleUI.gameObject.SetActive(true);
+        UpdatePlayerHealthUI(playerUnit.GetHealth());
+        UpdateEnemyHealthUI(enemyUnit.GetHealth());
         InstantiateBattleStationCombatants();
         InitializeStateMachine();
         currentState.StateAction();
@@ -98,6 +113,7 @@ public class BattleSystem : MonoBehaviour
 
     public void EndBattle()
     {
+        battleUI.gameObject.SetActive(false);
         adventureSystem.SetActive(true);
         gameObject.transform.parent.gameObject.SetActive(false);
     }

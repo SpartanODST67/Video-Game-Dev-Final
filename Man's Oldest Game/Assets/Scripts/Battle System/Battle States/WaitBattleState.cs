@@ -76,12 +76,14 @@ public class WaitBattleState : BattleState
     {
         Debug.Log("Enemy Wins Round");
         player.TakeDamage(1);
+        battleSystem.UpdatePlayerHealthUI(player.GetHealth());
     }
 
     private void PlayerRound()
     {
         Debug.Log("Player Wins Round");
         enemy.TakeDamage(1);
+        battleSystem.UpdateEnemyHealthUI(enemy.GetHealth());
     }
 
     private void DetermineMatch()
