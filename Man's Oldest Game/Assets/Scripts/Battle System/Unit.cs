@@ -5,11 +5,13 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     [Header("Unit Stats")]
-    [SerializeField] int health = 3;
+    [SerializeField] int maxHealth = 3;
+    private int health;
     private EnemyAI myAI;
 
     private void OnEnable()
     {
+        health = maxHealth;
         myAI = GetComponent<EnemyAI>();
     }
 
@@ -27,6 +29,10 @@ public class Unit : MonoBehaviour
     public int Heal(int health)
     {
         this.health += health;
+        if(health > maxHealth)
+        {
+            health = maxHealth;
+        }
         return this.health;
     }
 
