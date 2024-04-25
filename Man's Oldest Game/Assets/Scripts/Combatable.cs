@@ -10,11 +10,6 @@ public class Combatable: MonoBehaviour
     [Header("My Combat Data")]
     [SerializeField] Unit myUnit;
 
-    private void Start()
-    {
-        myUnit = GetComponent<Unit>();
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
