@@ -10,6 +10,11 @@ public class MenuFunctions : MonoBehaviour
         SceneManager.LoadScene("SampleScreen");
     }
 
+    public void LoadScene(string target)
+    {
+        SceneManager.LoadScene(target);
+    }
+
     public void ExitGame()
     {
         Debug.Log("Quitting Game");
