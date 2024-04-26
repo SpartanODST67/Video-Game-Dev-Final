@@ -8,7 +8,7 @@ public class InputHandler : MonoBehaviour
     [SerializeField] ControllableCharacter controlledCharacter;
     [Header("Pause Menu")]
     [SerializeField] GameObject pauseMenu;
-    public bool isGamePaused = false;
+    public bool isGamePaused { get; private set; } = false;
 
     private void Update()
     {
