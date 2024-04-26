@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -24,42 +25,56 @@ public class PopulateItems : MonoBehaviour
             yield return null;
         }
 
-        int child = 0;
         int j = -1;
         foreach(int quantity in playerInventory.itemQuantities)
         {
             j++;
-            GameObject childObject;
-            Button childButton;
-            TextMeshProUGUI childText;
-            ButtonIndex buttonIndex;
+            bool childFound = false;
+            GameObject childObject = null;
+            Button childButton = null;
+            TextMeshProUGUI childText = null;
+            ButtonIndex buttonIndex = null;
+
             if (quantity <= 0)
             {
                 continue;
             }
-            if (child < transform.childCount) {
+
+            for(int i = 0; i < transform.childCount; i++)
+            {
+                if(childFound)
+                {
+                    break;
+                }
+
                 try
                 {
-                    childObject = transform.GetChild(child).gameObject;
+                    childObject = transform.GetChild(i).gameObject;
+                    Debug.Log(childObject.name);
                     childButton = childObject.GetComponent<Button>();
                     buttonIndex = childObject.GetComponent<ButtonIndex>();
+                    if(buttonIndex.index != -1)
+                    {
+                        throw new Exception("Button Already Used.");
+                    }
                     childText = childObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-
-                } catch
+                    childObject.gameObject.SetActive(true);
+                    childFound = true;
+                } catch (Exception e)
                 {
-                    childObject = Instantiate(buttonPrefab, transform);
-                    childButton = childObject.GetComponent<Button>();
-                    buttonIndex = childObject.GetComponent<ButtonIndex>();
-                    childText = childObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+                    Debug.LogWarning(e.Message);
+                    childFound = false;
                 }
             }
-            else
+
+            if(!childFound)
             {
                 childObject = Instantiate(buttonPrefab, transform);
                 childButton = childObject.GetComponent<Button>();
                 buttonIndex = childObject.GetComponent<ButtonIndex>();
                 childText = childObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             }
+
             buttonIndex.index = j;
             childText.text = playerInventory.itemDictionary[j].GetItemName();
             childButton.onClick.RemoveAllListeners();
@@ -70,7 +85,7 @@ public class PopulateItems : MonoBehaviour
                 detailMenu.SetItemQuantity(playerInventory.itemQuantities[buttonIndex.index]);
                 detailMenu.gameObject.SetActive(true);
             });
-            child++;
+
             yield return null;
         }
     }
