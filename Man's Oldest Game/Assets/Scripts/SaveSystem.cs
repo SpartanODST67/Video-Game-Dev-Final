@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveSystem : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class SaveSystem : MonoBehaviour
     {
         Singleton();
         DontDestroyOnLoad(gameObject);
+        sceneName = SceneManager.GetActiveScene().name;
     }
 
     private void Singleton()
@@ -35,6 +37,11 @@ public class SaveSystem : MonoBehaviour
     public void SetSceneName(string sceneName)
     {
         this.sceneName = sceneName;
+    }
+
+    public string GetSceneName()
+    {
+        return sceneName;
     }
 
     public void SetFileName(string fileName)
