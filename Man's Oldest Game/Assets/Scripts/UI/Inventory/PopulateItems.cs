@@ -11,6 +11,8 @@ public class PopulateItems : MonoBehaviour
     [SerializeField] Inventory playerInventory;
     [SerializeField] GameObject buttonPrefab;
     [SerializeField] DetailMenu detailMenu;
+    [SerializeField] GameObject emptyNotification;
+    [SerializeField] SnapClose coverUp; 
 
     private void OnEnable()
     {
@@ -19,6 +21,7 @@ public class PopulateItems : MonoBehaviour
 
     IEnumerator PopulateItemsCoroutine()
     {
+        coverUp.gameObject.SetActive(true);
         for(int i = transform.childCount - 1; i >= 0; i--)
         {
             transform.GetChild(i).gameObject.SetActive(false);
@@ -89,5 +92,23 @@ public class PopulateItems : MonoBehaviour
 
             yield return null;
         }
+
+        bool activeButtons = false;
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if (transform.GetChild(i).gameObject.activeSelf)
+            {
+                activeButtons = true;
+                break;
+            }
+            yield return null;
+        }
+
+        if (!activeButtons)
+        {
+            emptyNotification.SetActive(true);
+        }
+
+        coverUp.Snap();
     }
 }
