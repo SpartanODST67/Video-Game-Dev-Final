@@ -83,6 +83,7 @@ public class PopulateItems : MonoBehaviour
                 detailMenu.SetItemName(playerInventory.itemDictionary[buttonIndex.index].GetItemName());
                 detailMenu.SetItemDescription(playerInventory.itemDictionary[buttonIndex.index].GetItemDescription());
                 detailMenu.SetItemQuantity(playerInventory.itemQuantities[buttonIndex.index]);
+                detailMenu.UpdateDiscardButton(buttonIndex.index);
                 detailMenu.gameObject.SetActive(true);
             });
 

@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class DetailMenu : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI itemName;
     [SerializeField] TextMeshProUGUI itemQuantity;
     [SerializeField] TextMeshProUGUI itemDescription;
+    [SerializeField] DiscardButton discardButton;
 
     public void SetItemName(string name)
     {
@@ -27,5 +30,10 @@ public class DetailMenu : MonoBehaviour
     public void SetItemDescription(string description)
     {
         itemDescription.text = description;
+    }
+
+    public void UpdateDiscardButton(int target)
+    {
+        discardButton.UpdateDiscardButton(target);
     }
 }
