@@ -3,19 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Battle System
-  - Adventure System
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Me
+  - 
   - Water
   - UI
   - 
   - 
-  - 
+  - PostProcessing
   - 
   - 
   - 
@@ -42,7 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Characters
-    uniqueID: 3509028679
     locked: 0
