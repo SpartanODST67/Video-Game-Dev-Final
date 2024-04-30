@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
-public class AudioSettingsHelper : AudioSettingsMenu
+public class AudioSettingsPrefLoader : AudioSettingsMenu
 {
 
     // Start is called before the first frame update
