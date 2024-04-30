@@ -8,4 +8,9 @@ public enum ControlKeys { UP, DOWN, LEFT, RIGHT, ROCK, PAPER, SICSSORS}
 public class Controls : ScriptableObject
 {
     public List<KeyCode> Keys = new List<KeyCode>();
+
+    public void SetKeys(List<KeyCode> newKeys)
+    {
+        Keys = newKeys;
+    }
 }

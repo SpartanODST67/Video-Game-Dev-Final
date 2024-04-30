@@ -7,7 +7,7 @@ public class ControlSettingsMenu : MonoBehaviour
 {
     [Header("Control Scriptable Object")]
     [SerializeField] Controls playerControls;
-    [SerializeField] Controls defaultControls;
+    [SerializeField] List<KeyCode> defaultControls = new List<KeyCode>();
 
     [Header("Control")]
     [SerializeField] TMP_Dropdown upDropdown;
@@ -23,21 +23,11 @@ public class ControlSettingsMenu : MonoBehaviour
     //I would fire myself if I saw this.
     public List<KeyCode> keys = new List<KeyCode> { KeyCode.A, KeyCode.B, KeyCode.C, KeyCode.D, KeyCode.E, KeyCode.F, KeyCode.G, KeyCode.H, KeyCode.I, KeyCode.J, KeyCode.K, KeyCode.L, KeyCode.M, KeyCode.N, KeyCode.O, KeyCode.P, KeyCode.Q, KeyCode.R, KeyCode.S, KeyCode.T, KeyCode.U, KeyCode.V, KeyCode.W, KeyCode.X, KeyCode.Y, KeyCode.Z};
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //GetKeyOptions();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnEnable()
     {
         GetKeyOptions();
+        SetActiveOptions();
     }
 
     private void GetKeyOptions()
@@ -65,6 +55,27 @@ public class ControlSettingsMenu : MonoBehaviour
         rockDropdown.AddOptions(options);
         paperDropdown.AddOptions(options);
         scissorsDropdown.AddOptions(options);
+    }
+
+    private void SetActiveOptions()
+    {
+        upDropdown.value = FindIndex(playerControls.Keys[(int)ControlKeys.UP]);
+        downDropdown.value = FindIndex(playerControls.Keys[(int)ControlKeys.DOWN]);
+        leftDropdown.value = FindIndex(playerControls.Keys[(int)ControlKeys.LEFT]);
+        rightDropdown.value = FindIndex(playerControls.Keys[(int)ControlKeys.RIGHT]);
+        rockDropdown.value = FindIndex(playerControls.Keys[(int)ControlKeys.ROCK]);
+        paperDropdown.value = FindIndex(playerControls.Keys[(int)ControlKeys.PAPER]);
+        scissorsDropdown.value = FindIndex(playerControls.Keys[(int)ControlKeys.SICSSORS]);
+    }
+
+    private int FindIndex(KeyCode key)
+    {
+        for(int i = 0; i < keys.Count; i++)
+        {
+            if (keys[i].Equals(key))
+                return i;
+        }
+        return 0;
     }
 
     public void ChooseControl(ControlKeys control, KeyCode key)
@@ -117,6 +128,10 @@ public class ControlSettingsMenu : MonoBehaviour
 
     public void ResetControls()
     {
-        playerControls.Keys = defaultControls.Keys;
+        Debug.Log("Resetting Controls");
+        playerControls.SetKeys(defaultControls);
+        Debug.Log("Controls Reset");
+        SetActiveOptions();
+        Debug.Log("Controls Visually Reset");
     }
 }
