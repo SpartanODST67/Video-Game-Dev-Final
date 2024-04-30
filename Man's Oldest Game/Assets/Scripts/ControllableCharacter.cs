@@ -7,6 +7,8 @@ public class ControllableCharacter : MonoBehaviour
 {
     [Header("Stats")]
     [SerializeField] float speed = 5f;
+    [Header("Animator")]
+    [SerializeField] Animator animator;
 
     public void move(Vector3 inputVector)
     {

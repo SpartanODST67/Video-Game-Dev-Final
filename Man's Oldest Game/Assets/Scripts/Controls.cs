@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ControlKeys { UP, DOWN, LEFT, RIGHT, ROCK, PAPER, SICSSORS}
+public enum ControlKeys { UP, DOWN, LEFT, RIGHT, ROCK, PAPER, SCISSORS}
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Controls")]
 public class Controls : ScriptableObject

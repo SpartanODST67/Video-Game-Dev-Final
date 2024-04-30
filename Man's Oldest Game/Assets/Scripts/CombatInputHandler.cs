@@ -5,6 +5,8 @@ using UnityEngine.Rendering.UI;
 
 public class CombatInputHandler : MonoBehaviour
 {
+    [Header("Controls")]
+    [SerializeField] Controls playerControls;
     AttackSelection selectedAttack;
     AttackSelection selectedBluff;
     BattleSystem battleSystem;
@@ -26,19 +28,19 @@ public class CombatInputHandler : MonoBehaviour
         while (waitingInput)
         {
             yield return 0;
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(playerControls.Keys[(int) ControlKeys.ROCK]))
             {
                 Debug.Log("Rock");
                 selectedAttack = AttackSelection.ROCK;
                 waitingInput = false;
             }
-            else if (Input.GetKeyDown(KeyCode.P))
+            else if (Input.GetKeyDown(playerControls.Keys[(int)ControlKeys.PAPER]))
             {
                 Debug.Log("Paper");
                 selectedAttack = AttackSelection.PAPER;
                 waitingInput = false;
             }
-            else if (Input.GetKeyDown(KeyCode.S))
+            else if (Input.GetKeyDown(playerControls.Keys[(int)ControlKeys.SCISSORS]))
             {
                 Debug.Log("Scissors");
                 selectedAttack = AttackSelection.SCISSORS;

@@ -8,6 +8,8 @@ public class InputHandler : MonoBehaviour
     [SerializeField] ControllableCharacter controlledCharacter;
     [Header("Pause Menu")]
     [SerializeField] GameObject pauseMenu;
+    [Header("Controls")]
+    [SerializeField] Controls playerControls;
     public bool isGamePaused { get; private set; } = false;
 
     private void Update()
@@ -36,8 +38,22 @@ public class InputHandler : MonoBehaviour
         {
             return;
         }
-        float verticalInput = Input.GetAxisRaw("Vertical");
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
+
+        float verticalInput = 0;
+        float horizontalInput = 0;
+
+        if (Input.GetKey(playerControls.Keys[(int)ControlKeys.UP]))
+            verticalInput = 1;
+
+        if (Input.GetKey(playerControls.Keys[(int)ControlKeys.DOWN]))
+            verticalInput = -1;
+
+        if (Input.GetKey(playerControls.Keys[(int)ControlKeys.LEFT]))
+            horizontalInput = -1;
+
+        if (Input.GetKey(playerControls.Keys[(int) ControlKeys.RIGHT]))
+            horizontalInput = 1;
+
         float extraInput = 0; //I'm sure I'm gonna need a 3rd input.
         Vector3 inputVector = new Vector3(horizontalInput, verticalInput, extraInput);
 

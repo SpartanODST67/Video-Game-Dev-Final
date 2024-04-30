@@ -65,7 +65,7 @@ public class ControlSettingsMenu : MonoBehaviour
         rightDropdown.value = FindIndex(playerControls.Keys[(int)ControlKeys.RIGHT]);
         rockDropdown.value = FindIndex(playerControls.Keys[(int)ControlKeys.ROCK]);
         paperDropdown.value = FindIndex(playerControls.Keys[(int)ControlKeys.PAPER]);
-        scissorsDropdown.value = FindIndex(playerControls.Keys[(int)ControlKeys.SICSSORS]);
+        scissorsDropdown.value = FindIndex(playerControls.Keys[(int)ControlKeys.SCISSORS]);
     }
 
     private int FindIndex(KeyCode key)
@@ -120,7 +120,7 @@ public class ControlSettingsMenu : MonoBehaviour
             case ControlKeys.PAPER:
                 playerControls.Keys[(int)changedControl] = keys[paperDropdown.value];
                 break;
-            case ControlKeys.SICSSORS:
+            case ControlKeys.SCISSORS:
                 playerControls.Keys[(int)changedControl] = keys[scissorsDropdown.value];
                 break;
         }
