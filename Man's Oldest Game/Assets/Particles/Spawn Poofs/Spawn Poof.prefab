@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8827304679400466904}
   - component: {fileID: 5897922057152383855}
   - component: {fileID: -5539734842210195985}
+  - component: {fileID: 2281409018312052901}
   m_Layer: 0
   m_Name: Spawn Poof
   m_TagString: Untagged
@@ -4895,3 +4896,20 @@ MonoBehaviour:
   myself: {fileID: 8827304679400466904}
   destroy: 0
   disable: 1
+--- !u!114 &2281409018312052901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7500518701130949461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a74dba2ccbc28f44ae45d5ca54e6729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockPosition: 1
+  lockRotation: 1
+  lockScale: 0
+  lockLocal: 0
+  lockWorld: 1
