@@ -25,8 +25,19 @@ public class WaitBattleState : BattleState
     {
         AttackSelection playerAttack = battleSystem.GetPlayerAttack();
         AttackSelection enemyAttack = battleSystem.GetEnemyAttack();
-        if (playerAttack == AttackSelection.ROCK)
+        if (playerAttack == AttackSelection.GUN)
         {
+            battleSystem.ThrowProp((int)AttackSelection.GUN, battleSystem.GetPlayerThrowPoint(), Vector2.right);
+            PlayerRound();
+        }
+        else if (playerAttack == AttackSelection.DYNAMITE)
+        {
+            battleSystem.ThrowProp((int)AttackSelection.DYNAMITE, battleSystem.GetPlayerThrowPoint(), Vector2.right);
+            DynamiteRound();
+        }
+        else if (playerAttack == AttackSelection.ROCK)
+        {
+            battleSystem.ThrowProp((int)AttackSelection.ROCK, battleSystem.GetPlayerThrowPoint(), Vector2.right);
             if (enemyAttack == AttackSelection.PAPER)
             {
                 EnemyRound();
@@ -42,6 +53,7 @@ public class WaitBattleState : BattleState
         }
         else if (playerAttack == AttackSelection.PAPER)
         {
+            battleSystem.ThrowProp((int)AttackSelection.PAPER, battleSystem.GetPlayerThrowPoint(), Vector2.right);
             if (enemyAttack == AttackSelection.SCISSORS)
             {
                 EnemyRound();
@@ -57,6 +69,7 @@ public class WaitBattleState : BattleState
         }
         else if (playerAttack == AttackSelection.SCISSORS)
         {
+            battleSystem.ThrowProp((int)AttackSelection.SCISSORS, battleSystem.GetPlayerThrowPoint(), Vector2.right);
             if (enemyAttack == AttackSelection.ROCK)
             {
                 EnemyRound();
@@ -84,6 +97,21 @@ public class WaitBattleState : BattleState
         Debug.Log("Player Wins Round");
         enemy.TakeDamage(1);
         battleSystem.UpdateEnemyHealthUI(enemy.GetHealth());
+    }
+
+    private void PlayerRound(int damage)
+    {
+        Debug.Log("Player Wins Round");
+        enemy.TakeDamage(damage);
+        battleSystem.UpdateEnemyHealthUI(enemy.GetHealth());
+    }
+
+    private void DynamiteRound()
+    {
+        Debug.Log("BOOM!");
+        enemy.TakeDamage(9999);
+        battleSystem.UpdateEnemyHealthUI(enemy.GetHealth());
+        player.TakeDamage(1);
     }
 
     private void DetermineMatch()

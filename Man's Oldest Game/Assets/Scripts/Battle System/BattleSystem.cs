@@ -15,6 +15,8 @@ public class BattleSystem : MonoBehaviour
     [Header("Battle Stations")]
     [SerializeField] Transform playerBattleStation;
     [SerializeField] Transform enemyBattleStation;
+    [SerializeField] Transform playerThrowPoint;
+    [SerializeField] Transform enemyThrowPoint;
     private GameObject stationedPlayer;
     private GameObject stationedEnemy;
     [Header("Battle UI")]
@@ -24,6 +26,10 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] HealthPips enemyHealthPips;
     [Header("Only here until animations")]
     [SerializeField] TextMeshProUGUI enemyMoveDisplay;
+    [Header("Animation Props")]
+    [SerializeField] List<GameObject> props;
+    [SerializeField] float throwForce;
+    [SerializeField] float torque;
 
     private AttackSelection playerAttack;
     private AttackSelection playerBluff = AttackSelection.NULL;
@@ -76,6 +82,7 @@ public class BattleSystem : MonoBehaviour
     {
         enemyAttack = attack;
     }
+
     public Unit GetPlayer()
     {
         return playerUnit;
@@ -99,6 +106,26 @@ public class BattleSystem : MonoBehaviour
     public AttackSelection GetEnemyAttack()
     {
         return enemyAttack;
+    }
+
+    public GameObject GetStationedPlayer()
+    {
+        return stationedPlayer;
+    }
+
+    public GameObject GetStationedEnemy()
+    {
+        return stationedEnemy;
+    }
+
+    public Transform GetPlayerThrowPoint()
+    {
+        return playerThrowPoint;
+    }
+
+    public Transform GetEnemyThrowPoint()
+    {
+        return enemyThrowPoint;
     }
 
     public void UpdatePlayerHealthUI(int value)
@@ -169,5 +196,13 @@ public class BattleSystem : MonoBehaviour
         PlayerBattleState tempState2 = (PlayerBattleState) battleStates[1];
         tempState2.SetInputHandler(inputHandler);
         SetState(battleStates[1]);
+    }
+
+    public void ThrowProp(int index, Transform origin, Vector2 direction)
+    {
+        Rigidbody2D thrownProp = Instantiate(props[index], origin).GetComponent<Rigidbody2D>();
+        thrownProp.AddForce(Vector3.up * throwForce, ForceMode2D.Impulse);
+        thrownProp.AddForce(direction, ForceMode2D.Impulse);
+        thrownProp.AddTorque(torque, ForceMode2D.Impulse);
     }
 }
