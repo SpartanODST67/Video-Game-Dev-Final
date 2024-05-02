@@ -7,25 +7,33 @@ public class BattleSystem : MonoBehaviour
 {
     [Header("System to Transer Back To")]
     [SerializeField] GameObject adventureSystem;
+
     [Header("Input Handler")]
     [SerializeField] CombatInputHandler inputHandler;
+
     [Header("Combat Units")]
     [SerializeField] Unit playerUnit;
     [SerializeField] Unit enemyUnit;
+
     [Header("Battle Stations")]
     [SerializeField] Transform playerBattleStation;
     [SerializeField] Transform enemyBattleStation;
     [SerializeField] Transform playerThrowPoint;
     [SerializeField] Transform enemyThrowPoint;
+    [SerializeField] SpurtBlood playerBlood;
+    [SerializeField] SpurtBlood enemyBlood;
     private GameObject stationedPlayer;
     private GameObject stationedEnemy;
+
     [Header("Battle UI")]
     [SerializeField] Canvas battleUI;
     [SerializeField] HealthPips playerHealthPips;
     [SerializeField] GameObject playerSelectionButtons;
     [SerializeField] HealthPips enemyHealthPips;
+
     [Header("Only here until animations")]
     [SerializeField] TextMeshProUGUI enemyMoveDisplay;
+
     [Header("Animation Props")]
     [SerializeField] List<GameObject> props;
     [SerializeField] float throwForce;
@@ -141,6 +149,16 @@ public class BattleSystem : MonoBehaviour
     public void UpdateDisplayedEnemyMove(AttackSelection attack)
     {
         enemyMoveDisplay.text = attack.ToString();
+    }
+
+    public void SpurtPlayerBlood()
+    {
+        playerBlood.Spurt();
+    }
+
+    public void SpurtEnemyBlood()
+    {
+        enemyBlood.Spurt();
     }
 
     public void ShowButtonSelection()

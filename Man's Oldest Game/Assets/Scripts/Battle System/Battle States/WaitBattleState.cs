@@ -25,19 +25,21 @@ public class WaitBattleState : BattleState
     {
         AttackSelection playerAttack = battleSystem.GetPlayerAttack();
         AttackSelection enemyAttack = battleSystem.GetEnemyAttack();
+        Vector2 playerAttackDirection = Vector2.right;
+        if(playerAttack == AttackSelection.GUN)
+            playerAttackDirection = Vector2.left;
+        battleSystem.ThrowProp((int)playerAttack, battleSystem.GetPlayerThrowPoint(), playerAttackDirection);
+        battleSystem.ThrowProp((int)enemyAttack, battleSystem.GetEnemyThrowPoint(), Vector2.left);
         if (playerAttack == AttackSelection.GUN)
         {
-            battleSystem.ThrowProp((int)AttackSelection.GUN, battleSystem.GetPlayerThrowPoint(), Vector2.right);
             PlayerRound();
         }
         else if (playerAttack == AttackSelection.DYNAMITE)
         {
-            battleSystem.ThrowProp((int)AttackSelection.DYNAMITE, battleSystem.GetPlayerThrowPoint(), Vector2.right);
             DynamiteRound();
         }
         else if (playerAttack == AttackSelection.ROCK)
         {
-            battleSystem.ThrowProp((int)AttackSelection.ROCK, battleSystem.GetPlayerThrowPoint(), Vector2.right);
             if (enemyAttack == AttackSelection.PAPER)
             {
                 EnemyRound();
@@ -53,7 +55,6 @@ public class WaitBattleState : BattleState
         }
         else if (playerAttack == AttackSelection.PAPER)
         {
-            battleSystem.ThrowProp((int)AttackSelection.PAPER, battleSystem.GetPlayerThrowPoint(), Vector2.right);
             if (enemyAttack == AttackSelection.SCISSORS)
             {
                 EnemyRound();
@@ -69,7 +70,6 @@ public class WaitBattleState : BattleState
         }
         else if (playerAttack == AttackSelection.SCISSORS)
         {
-            battleSystem.ThrowProp((int)AttackSelection.SCISSORS, battleSystem.GetPlayerThrowPoint(), Vector2.right);
             if (enemyAttack == AttackSelection.ROCK)
             {
                 EnemyRound();
@@ -89,6 +89,7 @@ public class WaitBattleState : BattleState
     {
         Debug.Log("Enemy Wins Round");
         player.TakeDamage(1);
+        battleSystem.SpurtPlayerBlood();
         battleSystem.UpdatePlayerHealthUI(player.GetHealth());
     }
 
@@ -96,6 +97,7 @@ public class WaitBattleState : BattleState
     {
         Debug.Log("Player Wins Round");
         enemy.TakeDamage(1);
+        battleSystem.SpurtEnemyBlood();
         battleSystem.UpdateEnemyHealthUI(enemy.GetHealth());
     }
 
@@ -103,6 +105,7 @@ public class WaitBattleState : BattleState
     {
         Debug.Log("Player Wins Round");
         enemy.TakeDamage(damage);
+        battleSystem.SpurtEnemyBlood();
         battleSystem.UpdateEnemyHealthUI(enemy.GetHealth());
     }
 
@@ -110,6 +113,7 @@ public class WaitBattleState : BattleState
     {
         Debug.Log("BOOM!");
         enemy.TakeDamage(9999);
+        battleSystem.SpurtEnemyBlood();
         battleSystem.UpdateEnemyHealthUI(enemy.GetHealth());
         player.TakeDamage(1);
     }
