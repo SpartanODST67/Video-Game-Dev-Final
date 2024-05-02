@@ -6,6 +6,7 @@ public class SnapClose : MonoBehaviour
 {
     [SerializeField] RectTransform myself;
     [SerializeField] int closeRate = 2;
+    [SerializeField] bool useFD = false;
     [Range(0.01f, 0.99f)]
     [SerializeField] float closeAmount = 0.1f;
 
@@ -17,7 +18,14 @@ public class SnapClose : MonoBehaviour
         }
         else
         {
-            StartCoroutine(SnapCoroutineFI());
+            if (useFD)
+            {
+                StartCoroutine(SnapCoroutineFD());
+            }
+            else
+            {
+                StartCoroutine(SnapCoroutineFI());
+            }
         }
     }
 
