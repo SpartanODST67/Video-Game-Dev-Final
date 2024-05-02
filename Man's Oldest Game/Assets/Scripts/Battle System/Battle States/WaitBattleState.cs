@@ -112,6 +112,7 @@ public class WaitBattleState : BattleState
     private void DynamiteRound()
     {
         Debug.Log("BOOM!");
+        battleSystem.Explode();
         enemy.TakeDamage(9999);
         battleSystem.SpurtEnemyBlood();
         battleSystem.UpdateEnemyHealthUI(enemy.GetHealth());

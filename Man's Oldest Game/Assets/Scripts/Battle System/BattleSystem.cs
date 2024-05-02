@@ -22,6 +22,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] Transform enemyThrowPoint;
     [SerializeField] SpurtBlood playerBlood;
     [SerializeField] SpurtBlood enemyBlood;
+    [SerializeField] ParticleSystem explosion;
     private GameObject stationedPlayer;
     private GameObject stationedEnemy;
 
@@ -159,6 +160,11 @@ public class BattleSystem : MonoBehaviour
     public void SpurtEnemyBlood()
     {
         enemyBlood.Spurt();
+    }
+
+    public void Explode()
+    {
+        explosion.Play();
     }
 
     public void ShowButtonSelection()

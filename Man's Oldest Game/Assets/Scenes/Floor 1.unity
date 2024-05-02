@@ -80086,6 +80086,86 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6648424527871159430}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &626612639
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1124781569}
+    m_Modifications:
+    - target: {fileID: 4878067942513696462, guid: 7385ace47bbdc204baeca6d322d685b7,
+        type: 3}
+      propertyPath: m_Name
+      value: Explosion Particle
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185346250426533867, guid: 7385ace47bbdc204baeca6d322d685b7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185346250426533867, guid: 7385ace47bbdc204baeca6d322d685b7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185346250426533867, guid: 7385ace47bbdc204baeca6d322d685b7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185346250426533867, guid: 7385ace47bbdc204baeca6d322d685b7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185346250426533867, guid: 7385ace47bbdc204baeca6d322d685b7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185346250426533867, guid: 7385ace47bbdc204baeca6d322d685b7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185346250426533867, guid: 7385ace47bbdc204baeca6d322d685b7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185346250426533867, guid: 7385ace47bbdc204baeca6d322d685b7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185346250426533867, guid: 7385ace47bbdc204baeca6d322d685b7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185346250426533867, guid: 7385ace47bbdc204baeca6d322d685b7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7385ace47bbdc204baeca6d322d685b7, type: 3}
+--- !u!4 &626612640 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9185346250426533867, guid: 7385ace47bbdc204baeca6d322d685b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 626612639}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &626612641 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8882954019126275989, guid: 7385ace47bbdc204baeca6d322d685b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 626612639}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &627556563
 GameObject:
   m_ObjectHideFlags: 0
@@ -80140,6 +80220,7 @@ MonoBehaviour:
   enemyThrowPoint: {fileID: 475876438}
   playerBlood: {fileID: 23706239}
   enemyBlood: {fileID: 1063085624}
+  explosion: {fileID: 626612641}
   battleUI: {fileID: 687977119}
   playerHealthPips: {fileID: 634953732}
   playerSelectionButtons: {fileID: 817509251}
@@ -82818,6 +82899,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907488318}
   m_CullTransparentMesh: 1
+--- !u!1 &915167061
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 915167062}
+  m_Layer: 0
+  m_Name: Inventory Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &915167062
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915167061}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.0392869, y: -23.920103, z: -2.0817556}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &943148924
 GameObject:
   m_ObjectHideFlags: 0
@@ -84885,6 +84997,7 @@ Transform:
   - {fileID: 1641292889}
   - {fileID: 947713628}
   - {fileID: 333166632}
+  - {fileID: 626612640}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1124781570
@@ -87613,6 +87726,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1377850118}
+        m_TargetAssemblyTypeName: ItemButton, Assembly-CSharp
+        m_MethodName: RemoveItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1377850116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89946,6 +90071,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1697949698}
+        m_TargetAssemblyTypeName: ItemButton, Assembly-CSharp
+        m_MethodName: RemoveItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -95245,3 +95382,4 @@ SceneRoots:
   - {fileID: 840150126}
   - {fileID: 1899781507}
   - {fileID: 230822491}
+  - {fileID: 915167062}

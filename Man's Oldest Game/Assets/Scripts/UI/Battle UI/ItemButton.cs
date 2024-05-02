@@ -16,4 +16,9 @@ public class ItemButton : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    public void RemoveItem()
+    {
+        playerInventory.itemQuantities[itemID]--;
+    }
 }
