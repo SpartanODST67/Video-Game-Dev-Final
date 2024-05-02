@@ -5,10 +5,12 @@ using UnityEngine;
 public class Combatable: MonoBehaviour
 {
     [Header("Camera and Input Systems")]
-    [SerializeField] GameObject BattleSystem;
-    [SerializeField] GameObject AdventureSystem;
+    [SerializeField] GameObject battleSystem;
+    [SerializeField] GameObject adventureSystem;
     [Header("My Combat Data")]
     [SerializeField] Unit myUnit;
+    [Header("My Movement Brain")]
+    [SerializeField] GameObject movementBrain;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,8 +23,9 @@ public class Combatable: MonoBehaviour
     public void InitiateCombat(Unit player)
     {
         Debug.Log("Entering Combat");
-        BattleSystem.SetActive(true);
-        AdventureSystem.SetActive(false);
-        BattleSystem.transform.GetChild(0).GetComponent<BattleSystem>().StartBattle(player, myUnit);
+        movementBrain.SetActive(false);
+        battleSystem.SetActive(true);
+        adventureSystem.SetActive(false);
+        battleSystem.transform.GetChild(0).GetComponent<BattleSystem>().StartBattle(player, myUnit);
     }
 }
