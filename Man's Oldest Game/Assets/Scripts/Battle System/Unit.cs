@@ -36,6 +36,11 @@ public class Unit : MonoBehaviour
         return this.health;
     }
 
+    public bool IsMaxHealth()
+    {
+        return health == maxHealth;
+    }
+
     public EnemyAI GetAI()
     {
         if(myAI == null)
