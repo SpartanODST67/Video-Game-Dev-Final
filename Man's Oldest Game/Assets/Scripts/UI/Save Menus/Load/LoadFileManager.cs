@@ -22,7 +22,7 @@ public class LoadFileManager : MonoBehaviour
     {
         for(int i = transform.childCount - 1; i > -1; i--)
         {
-            Destroy(transform.GetChild(i).gameObject);
+            transform.GetChild(i).gameObject.SetActive(false);
             yield return null;
         }
 
