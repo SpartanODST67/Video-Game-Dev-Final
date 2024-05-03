@@ -14,12 +14,12 @@ public class WinBattleState : BattleState
     public void StateAction()
     {
         Debug.Log("Won Battle");
-        battleSystem.DestroyBattleStationCombatants();
-        //RewardPlayer();
+        battleSystem.DestroyEnemyBattleStationCombatant();
         //I would fire myself if I saw this.
+        //Oh, this isn't monobehaviour, so I can't use destroy :P
         GameObject enemy = battleSystem.GetEnemy().gameObject;
         enemy.AddComponent<DestroyOnDisable>();
         enemy.SetActive(false);
-        battleSystem.EndBattle();
+        battleSystem.Victory();
     }
 }

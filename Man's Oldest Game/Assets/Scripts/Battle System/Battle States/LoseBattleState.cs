@@ -15,8 +15,7 @@ public class LoseBattleState : BattleState
     public void StateAction()
     {
         Debug.Log("Lost Battle");
-        battleSystem.DestroyBattleStationCombatants();
-        //RewardPlayer();
-        SceneManager.LoadScene("TitleScreen");
+        battleSystem.DestroyPlayerBattleStationCombatant();
+        battleSystem.Defeat();
     }
 }

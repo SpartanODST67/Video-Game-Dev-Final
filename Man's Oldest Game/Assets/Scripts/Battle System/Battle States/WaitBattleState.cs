@@ -90,6 +90,7 @@ public class WaitBattleState : BattleState
         Debug.Log("Enemy Wins Round");
         player.TakeDamage(1);
         battleSystem.SpurtPlayerBlood();
+        battleSystem.PlayRoundLostSound();
         battleSystem.UpdatePlayerHealthUI(player.GetHealth());
     }
 
@@ -98,6 +99,7 @@ public class WaitBattleState : BattleState
         Debug.Log("Player Wins Round");
         enemy.TakeDamage(1);
         battleSystem.SpurtEnemyBlood();
+        battleSystem.PlayRoundWinSound();
         battleSystem.UpdateEnemyHealthUI(enemy.GetHealth());
     }
 
@@ -106,6 +108,7 @@ public class WaitBattleState : BattleState
         Debug.Log("Player Wins Round");
         enemy.TakeDamage(damage);
         battleSystem.SpurtEnemyBlood();
+        battleSystem.PlayRoundWinSound();
         battleSystem.UpdateEnemyHealthUI(enemy.GetHealth());
     }
 
@@ -115,6 +118,7 @@ public class WaitBattleState : BattleState
         battleSystem.Explode();
         enemy.TakeDamage(9999);
         battleSystem.SpurtEnemyBlood();
+        battleSystem.PlayRoundWinSound();
         battleSystem.UpdateEnemyHealthUI(enemy.GetHealth());
         player.TakeDamage(1);
     }

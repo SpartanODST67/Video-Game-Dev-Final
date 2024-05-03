@@ -9,9 +9,14 @@ public class NPCMovementBrain : MonoBehaviour
     [SerializeField] float arrivalThreshold = 0.001f;
     [SerializeField] float positionDifferenceThreshold = 0.001f;
     [SerializeField] ControllableCharacter character;
+    [SerializeField] GameObject battleSystem;
 
     private void Update()
     {
+        if(battleSystem.activeSelf)
+        {
+            return;
+        }
         float pointDistance = StraightDistance(movementPoints[movementPointIndex].position);
         if(pointDistance <= arrivalThreshold)
         {

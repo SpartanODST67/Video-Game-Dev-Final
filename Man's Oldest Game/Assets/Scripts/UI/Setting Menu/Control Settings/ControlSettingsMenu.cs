@@ -59,6 +59,7 @@ public class ControlSettingsMenu : MonoBehaviour
 
     private void SetActiveOptions()
     {
+        Debug.Log("Setting Active Options");
         upDropdown.value = FindIndex(playerControls.Keys[(int)ControlKeys.UP]);
         downDropdown.value = FindIndex(playerControls.Keys[(int)ControlKeys.DOWN]);
         leftDropdown.value = FindIndex(playerControls.Keys[(int)ControlKeys.LEFT]);

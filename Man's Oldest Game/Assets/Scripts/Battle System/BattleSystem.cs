@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BattleSystem : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] HealthPips playerHealthPips;
     [SerializeField] GameObject playerSelectionButtons;
     [SerializeField] HealthPips enemyHealthPips;
+    [SerializeField] BattleEndPopup battleEndPopup;
 
     [Header("Only here until animations")]
     [SerializeField] TextMeshProUGUI enemyMoveDisplay;
@@ -39,6 +41,10 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] List<GameObject> props;
     [SerializeField] float throwForce;
     [SerializeField] float torque;
+
+    [Header("Battle Sounds")]
+    [SerializeField] AudioSource roundLoseSound;
+    [SerializeField] AudioSource roundWinSound;
 
     private AttackSelection playerAttack;
     private AttackSelection playerBluff = AttackSelection.NULL;
@@ -167,9 +173,29 @@ public class BattleSystem : MonoBehaviour
         explosion.Play();
     }
 
+    public void PlayRoundWinSound()
+    {
+        roundWinSound.Play();
+    }
+
+    public void PlayRoundLostSound()
+    {
+        roundLoseSound.Play();
+    }
+
     public void ShowButtonSelection()
     {
         playerSelectionButtons.SetActive(true);
+    }
+
+    public void Victory()
+    {
+        battleEndPopup.DisplayVictory();
+    }
+
+    public void Defeat()
+    {
+        battleEndPopup.DisplayDefeat();
     }
 
     //Why did I make a StartBattleState???
@@ -193,6 +219,11 @@ public class BattleSystem : MonoBehaviour
         gameObject.transform.parent.gameObject.SetActive(false);
     }
 
+    public void ReturnToTitleScreen()
+    {
+        SceneManager.LoadScene("TitleScreen");
+    }
+
     //This is so hacky
     public void InstantiateBattleStationCombatants()
     {
@@ -204,8 +235,18 @@ public class BattleSystem : MonoBehaviour
 
     public void DestroyBattleStationCombatants()
     {
-        Destroy(enemyBattleStation.transform.GetChild(0).gameObject);
-        Destroy(playerBattleStation.transform.GetChild(0).gameObject);
+        DestroyEnemyBattleStationCombatant();
+        DestroyPlayerBattleStationCombatant();
+    }
+
+    public void DestroyEnemyBattleStationCombatant()
+    {
+        Destroy(enemyBattleStation.transform.GetChild(enemyBattleStation.childCount - 1).gameObject);
+    }
+
+    public void DestroyPlayerBattleStationCombatant()
+    {
+        Destroy(playerBattleStation.transform.GetChild(playerBattleStation.childCount - 1).gameObject);
     }
 
     public void InitializeStateMachine()
