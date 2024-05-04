@@ -352,8 +352,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   movementPointIndex: 0
-  arrivalThreshold: 0.01
-  positionDifferenceThreshold: 0.001
+  arrivalThreshold: 0.05
+  positionDifferenceThreshold: 0.005
   character: {fileID: 1579054185297283902}
   battleSystem: {fileID: 0}
 --- !u!1001 &4675184930372418147

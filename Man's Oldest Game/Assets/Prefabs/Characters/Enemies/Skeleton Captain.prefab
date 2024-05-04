@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4993802404403562729}
   - component: {fileID: 5664040647146496996}
   - component: {fileID: 2848656287734616533}
+  - component: {fileID: 976166353590551716}
   m_Layer: 0
   m_Name: Skeleton Captain
   m_TagString: Untagged
@@ -356,6 +357,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gullibility: 50
+--- !u!114 &976166353590551716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6848755995054840490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 000000008bad360ebd1dda17
+  m_ShapePath:
+  - {x: -0.015, y: -0.5, z: 0}
+  - {x: -0.015, y: 0.15, z: 0}
+  - {x: 0.015, y: 0.15, z: 0}
+  - {x: 0.015, y: -0.5, z: 0}
+  m_ShapePathHash: -7560743
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -203574
+  m_LocalBounds:
+    m_Center: {x: 0, y: -0.17500001, z: 0}
+    m_Extent: {x: 0.015, y: 0.325, z: 0}
 --- !u!1001 &6190065224685855399
 PrefabInstance:
   m_ObjectHideFlags: 0

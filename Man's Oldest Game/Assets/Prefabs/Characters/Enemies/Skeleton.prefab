@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 4445189693097260590}
   - component: {fileID: 1869415609606150554}
   - component: {fileID: 3291161086266681250}
+  - component: {fileID: 8904158963812333826}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -302,6 +303,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1869415609606150554}
   currentState: Idle
+--- !u!114 &8904158963812333826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138232881674772770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 000000008bad360ebd1dda17
+  m_ShapePath:
+  - {x: -0.015, y: -0.5, z: 0}
+  - {x: -0.015, y: 0.15, z: 0}
+  - {x: 0.015, y: 0.15, z: 0}
+  - {x: 0.015, y: -0.5, z: 0}
+  m_ShapePathHash: -7560743
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -194810
+  m_LocalBounds:
+    m_Center: {x: 0, y: -0.17500001, z: 0}
+    m_Extent: {x: 0.015, y: 0.325, z: 0}
 --- !u!1 &2502430944803798978
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,6 +388,7 @@ MonoBehaviour:
   arrivalThreshold: 0.01
   positionDifferenceThreshold: 0.001
   character: {fileID: 8789192653452152861}
+  battleSystem: {fileID: 0}
 --- !u!1001 &6935930541337457825
 PrefabInstance:
   m_ObjectHideFlags: 0

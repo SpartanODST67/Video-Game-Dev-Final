@@ -24,6 +24,8 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] SpurtBlood playerBlood;
     [SerializeField] SpurtBlood enemyBlood;
     [SerializeField] ParticleSystem explosion;
+    [SerializeField] ForceLookDirection playerLookDirection;
+    [SerializeField] ForceLookDirection enemyLookDirection;
     private GameObject stationedPlayer;
     private GameObject stationedEnemy;
 
@@ -229,8 +231,10 @@ public class BattleSystem : MonoBehaviour
     {
         stationedEnemy = Instantiate(enemyUnit.gameObject, enemyBattleStation);
         stationedEnemy.transform.localPosition = Vector3.zero;
+        enemyLookDirection.ForceDirection();
         stationedPlayer = Instantiate(playerUnit.gameObject, playerBattleStation);
         stationedPlayer.transform.localPosition = Vector3.zero;
+        playerLookDirection.ForceDirection();
     }
 
     public void DestroyBattleStationCombatants()
