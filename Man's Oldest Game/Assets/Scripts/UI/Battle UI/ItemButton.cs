@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ItemButton : MonoBehaviour
 {
     [SerializeField] int itemID;
+    [SerializeField] Button button;
     [SerializeField] Inventory playerInventory;
 
     // Update is called once per frame
@@ -13,7 +14,11 @@ public class ItemButton : MonoBehaviour
     {
         if (playerInventory.itemQuantities[itemID] <= 0)
         {
-            gameObject.SetActive(false);
+            button.interactable = false;
+        }
+        else
+        {
+            button.interactable = true;
         }
     }
 
