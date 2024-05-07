@@ -329,7 +329,7 @@ MonoBehaviour:
   - {x: 0.015, y: -0.5, z: 0}
   m_ShapePathHash: -7560743
   m_Mesh: {fileID: 0}
-  m_InstanceId: -194810
+  m_InstanceId: 86902
   m_LocalBounds:
     m_Center: {x: 0, y: -0.17500001, z: 0}
     m_Extent: {x: 0.015, y: 0.325, z: 0}
@@ -385,8 +385,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   movementPointIndex: 0
-  arrivalThreshold: 0.01
-  positionDifferenceThreshold: 0.001
+  arrivalThreshold: 0.1
+  positionDifferenceThreshold: 0.01
   character: {fileID: 8789192653452152861}
   battleSystem: {fileID: 0}
 --- !u!1001 &6935930541337457825
